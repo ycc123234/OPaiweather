@@ -1,9 +1,9 @@
 <litepal>
-    <dbname value="opai_weather"/>
+    <dbname value="opai_weaher"/>
     <version value="1"/>
     <list>
-        <mapping class="com.opaiweather.android.db.Province"/>
-        <mapping class="com.opaiweather.android.db.City"/>
-        <mapping class="com.opaiweather.android.db.County"/>
+        <mapping class="com.activity.opaiweaher.db.Province"/>
+        <mapping class="com.activity.opaiweaher.db.City"/>
+        <mapping class="com.activity.opaiweaher.db.County"/>
     </list>
 </litepal>

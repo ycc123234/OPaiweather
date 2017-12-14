@@ -1,10 +1,12 @@
 package com.activity.opaiweaher.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by msi-pc on 2017/12/12.
  */
 
-public class County {
+public class County extends DataSupport {
     private int id;
     private String countyName;
     private String weatherId;
