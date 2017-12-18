@@ -1,10 +1,13 @@
 package com.activity.opaiweaher.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.activity.opaiweaher.db.City;
 import com.activity.opaiweaher.db.County;
 import com.activity.opaiweaher.db.Province;
+import com.activity.opaiweaher.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +61,7 @@ public class Utility {
         if(!TextUtils.isEmpty(response)){
             try{
                 JSONArray allCounties=new JSONArray(response);
-                for(int i=0;i<response.length();i++){
+                for(int i=0;i<allCounties.length();i++){
                     JSONObject countyObject=allCounties.getJSONObject(i);
                     County county=new County();
                     county.setWeatherId(countyObject.getString("weather_id"));
@@ -73,4 +76,18 @@ public class Utility {
         }
         return false;
     }
+
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject=new JSONObject(response);
+            JSONArray jsonArray=jsonObject.getJSONArray("HeWeather");
+            String weatherContent=jsonArray.getJSONObject(0).toString();
+            Log.d("weatherDate", "handleWeatherResponse: "+weatherContent);
+            return new Gson().fromJson(weatherContent,Weather.class);
+        }catch(Exception e){
+           e.printStackTrace();
+        }
+        return null;
+    }
+
 }
