@@ -1,5 +1,6 @@
 package com.activity.opaiweaher;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.activity.opaiweaher.gson.Forecast;
 import com.activity.opaiweaher.gson.Weather;
+import com.activity.opaiweaher.service.AutoUpdateService;
 import com.activity.opaiweaher.util.HttpUtil;
 import com.activity.opaiweaher.util.Utility;
 import com.bumptech.glide.Glide;
@@ -208,5 +210,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent=new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
